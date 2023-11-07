@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #75e088;
+        }
+
+        .calculator {
+            background-color: pink;
+            padding: 80px;
+            border-radius: 60px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Age Calculator</h1>
+        <p>Enter your birthdate:</p>
+        <input type="date" id="birthdate">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateAge() {
+            const birthdate = new Date(document.getElementById('birthdate').value);
+            const currentDate = new Date();
+            const ageInMilliseconds = currentDate - birthdate;
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25); // accounting for leap years
+
+            const age = Math.floor(ageInYears);
+            document.getElementById('result').textContent = `Your age is ${age} years.`;
+        }
+    </script>
+</body>
+</html>
